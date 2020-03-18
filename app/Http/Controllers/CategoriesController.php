@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
@@ -37,6 +38,12 @@ class CategoriesController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:categories',
         ]);
+
+        Category::create([
+           'name' => $request['name'],
+        ]);
+
+        return redirect(route('categories.index'));
     }
 
     /**
