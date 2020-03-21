@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use App\Http\Requests\CreateCategoryRequest;
+use App\Http\Requests\Categories\CreateCategoryRequest;
+use App\Http\Requests\Categories\UpdateCategoryRequest;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
@@ -74,7 +75,7 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCategoryRequest $request, $id)
     {
         //
     }
