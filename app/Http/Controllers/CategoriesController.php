@@ -71,13 +71,19 @@ class CategoriesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  UpdateCategoryRequest  $request
+     * @param  Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCategoryRequest $request, $id)
+    public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $category->update([
+            'name' => $request->name,
+        ]);
+
+        session()->flash('success', 'Category updated successfully.');
+
+        return redirect(route('categories.index'));
     }
 
     /**
