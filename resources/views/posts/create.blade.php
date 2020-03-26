@@ -18,8 +18,8 @@
                 <textarea name="description" id="description" cols="5" rows="5" class="form-control"></textarea>
             </div>
             <div class="form-group">
-                <label for="content">Content</label>
-                <textarea name="content" id="content" cols="5" rows="5" class="form-control"></textarea>
+                <label for="text">Content</label>
+                <textarea name="text" id="text" cols="5" rows="5" class="form-control"></textarea>
             </div>
             <div class="form-group">
                 <label for="published_at">Published at</label>
