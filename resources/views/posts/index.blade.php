@@ -15,16 +15,16 @@
         <table class="table">
             <thead>
             <tr>
-                <th>
-                    Name
-                </th>
+                <th>Image</th>
+                <th>Title</th>
                 <th></th>
             </tr>
             </thead>
             <tbody>
             @foreach($posts as $post)
                 <tr>
-                    <td>{{ $post->name }}</td>
+                    <td><img src="storage/{{ $post->image }}" width="60px" alt=""></td>
+                    <td>{{ $post->title }}</td>
                     <td>
                         <a href="{{ route('posts.edit', $post->id)}}"
                            class="btn btn-info btn-sm"
