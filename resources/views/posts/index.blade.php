@@ -23,16 +23,15 @@
             <tbody>
             @foreach($posts as $post)
                 <tr>
-                    <td><img src="{{ asset('storage/' . $post->image) }}" width="60px" alt=""></td>
+                    <td><img src="{{ asset($post->image) }}" width="120px" alt=""></td>
                     <td>{{ $post->title }}</td>
                     <td>
                         <a href="{{ route('posts.edit', $post->id)}}"
                            class="btn btn-info btn-sm"
                            role="button">Edit</a>
-                        <button type="button" class="btn btn-danger btn-sm"
-                                onclick="handleDelete({{ $post->id }})">
-                            Delete
-                        </button>
+                        <a href="{{ route('posts.destroy', $post->id)}}"
+                           class="btn btn-danger btn-sm"
+                           role="button">Trash</a>
                     </td>
                 </tr>
             @endforeach
