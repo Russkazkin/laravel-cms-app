@@ -92,7 +92,7 @@
                             </ul>
                             <ul class="list-group">
                                 <li class="list-group-item">
-                                    <a href="{{ route('posts.index') }}">Trashed posts</a>
+                                    <a href="{{ route('posts.trashed') }}">Trashed posts</a>
                                 </li>
                             </ul>
                         </div>
