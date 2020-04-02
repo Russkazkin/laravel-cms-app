@@ -87,8 +87,9 @@ class PostsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Post $post
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy(Post $post)
     {
@@ -97,5 +98,17 @@ class PostsController extends Controller
         session()->flash('success', 'Post trashed successfully');
 
         return redirect(route('posts.index'));
+    }
+
+    /**
+     * Display a listing of all trashed posts.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function trashed()
+    {
+        $trashed = Post::withTrashed()->get();
+
+        return view('posts.index')->withPosts($trashed);
     }
 }
