@@ -26,13 +26,15 @@
                     <td><img src="{{ asset('storage/' . $post->image) }}" width="120px" alt=""></td>
                     <td>{{ $post->title }}</td>
                     <td>
+                        @if(!$post->trashed())
                         <a href="{{ route('posts.edit', $post->id)}}"
                            class="btn btn-info btn-sm"
-                           role="button">Edit</a>
+                           role="button">Edit
+                        </a>
+                        @endif
                         <form action="{{ route('posts.destroy', $post->id) }}" method="POST" style="display: inline-block">
                             @csrf
                             @method('DELETE')
-
                             <button
                                 class="btn btn-danger btn-sm"
                                 type="submit"
