@@ -93,9 +93,17 @@ class PostsController extends Controller
      */
     public function destroy(Post $post)
     {
-        $post->delete();
 
-        session()->flash('success', 'Post trashed successfully');
+
+        if($post->trashed()) {
+            $post->forceDelete();
+            session()->flash('success', 'Post deleted successfully');
+        } else {
+            $post->delete();
+            session()->flash('success', 'Post trashed successfully');
+        }
+
+
 
         return redirect(route('posts.index'));
     }
