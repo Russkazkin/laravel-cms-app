@@ -107,8 +107,8 @@ class PostsController extends Controller
      */
     public function trashed()
     {
-        $trashed = Post::withTrashed()->get();
+        $trashed = Post::onlyTrashed()->get();
 
-        return view('posts.index')->with('posts', $trashed);
+        return view('posts.index')->withPosts($trashed);
     }
 }
