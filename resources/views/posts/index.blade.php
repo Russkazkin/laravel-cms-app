@@ -32,10 +32,13 @@
                         <form action="{{ route('posts.destroy', $post->id) }}" method="POST" style="display: inline-block">
                             @csrf
                             @method('DELETE')
+
                             <button
                                 class="btn btn-danger btn-sm"
                                 type="submit"
-                                role="button">Trash</button>
+                                role="button">
+                                {{ $post->trashed() ? 'Delete' : 'Trash' }}
+                            </button>
                         </form>
                     </td>
                 </tr>
