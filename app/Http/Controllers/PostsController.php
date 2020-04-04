@@ -87,13 +87,13 @@ class PostsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Post $post
+     * @param $id
      * @return \Illuminate\Http\Response
      * @throws \Exception
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-
+        $post = Post::withTrashed()->where('id', $id)->first();
 
         if($post->trashed()) {
             $post->forceDelete();
