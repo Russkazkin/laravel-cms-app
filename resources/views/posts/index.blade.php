@@ -50,6 +50,20 @@
                                 {{ $post->trashed() ? 'Delete' : 'Trash' }}
                             </button>
                         </form>
+                        @if($post->trashed())
+                        <form action="{{ route('posts.restore', $post->id) }}"
+                              method="POST"
+                              style="display: inline-block">
+                            @csrf
+                            @method('PATCH')
+                            <button
+                                class="btn btn-info btn-sm"
+                                type="submit"
+                                role="button">
+                                Restore
+                            </button>
+                        </form>
+                        @endif
                     </td>
                 </tr>
             @endforeach

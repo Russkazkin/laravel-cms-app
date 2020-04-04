@@ -27,4 +27,4 @@ Route::resource('categories', 'CategoriesController');
 
 \Route::get('trashed-posts', 'PostsController@trashed')->name('posts.trashed');
 
-\Route::patch('restore-post'. 'PostsController@restore')->name('posts.restore');
+\Route::patch('posts/{post}/restore', 'PostsController@restore')->name('posts.restore');
