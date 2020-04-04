@@ -110,7 +110,7 @@ class PostsController extends Controller
 
 
 
-        return redirect(route('posts.index'));
+        return redirect(route('posts.trashed'));
     }
 
     /**
@@ -123,5 +123,14 @@ class PostsController extends Controller
         $trashed = Post::onlyTrashed()->get();
 
         return view('posts.index')->withPosts($trashed);
+    }
+
+    public function restore(Post $post)
+    {
+        $post->restore();
+
+        session()->flash('success', 'Post restored successfully');
+
+        return redirect(route('posts.index'));
     }
 }
