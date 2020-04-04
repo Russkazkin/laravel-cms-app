@@ -93,7 +93,7 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::withTrashed()->where('id', $id)->first();
+        $post = Post::withTrashed()->where('id', $id)->firstOrFail();
 
         if($post->trashed()) {
             $post->forceDelete();

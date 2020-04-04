@@ -1,3 +1,10 @@
+<?php
+/**
+ * @var $posts \App\Post []
+ */
+?>
+
+
 @extends('layouts.app')
 
 @section('content')
@@ -12,6 +19,7 @@
         Posts
     </div>
     <div class="card-body">
+        @if($posts->count())
         <table class="table">
             <thead>
             <tr>
@@ -47,6 +55,9 @@
             @endforeach
             </tbody>
         </table>
+        @else
+        <h6 class="text-center">No posts yet</h6>
+        @endif
     </div>
 </div>
 
