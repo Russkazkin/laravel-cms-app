@@ -38,8 +38,6 @@ class PostsController extends Controller
     public function store(CreatePostsRequest $request)
     {
 
-        dd($request);
-
         $image = $request->image->store('posts');
 
         Post::create([
