@@ -7,6 +7,17 @@
         Create post
     </div>
     <div class="card-body">
+        @if($errors->any())
+            <div class="alert alert-danger">
+                <ul class="list-group">
+                    @foreach($errors->all() as $error)
+                        <li class="list-group-item text-danger">
+                            {{ $error }}
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
@@ -19,8 +30,8 @@
             </div>
             <div class="form-group">
                 <label for="text">Content</label>
-                <input id="content" type="hidden" name="content">
-                <trix-editor input="content"></trix-editor>
+                <input id="text" type="hidden" name="text">
+                <trix-editor input="text"></trix-editor>
             </div>
             <div class="form-group">
                 <label for="published_at">Published at</label>
@@ -43,7 +54,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.1/trix.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
-    flatpickr('#published_at');
+    flatpickr('#published_at', {
+        enableTime: true,
+    });
 </script>
 @endsection
 

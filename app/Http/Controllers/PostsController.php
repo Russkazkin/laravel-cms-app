@@ -37,6 +37,9 @@ class PostsController extends Controller
      */
     public function store(CreatePostsRequest $request)
     {
+
+        dd($request);
+
         $image = $request->image->store('posts');
 
         Post::create([
@@ -44,6 +47,7 @@ class PostsController extends Controller
             'description' => $request->description,
             'content' => $request->text,
             'image' => $image,
+            'published_at' => $request->published_at,
         ]);
 
         session()->flash('success', 'Post created successfully');
