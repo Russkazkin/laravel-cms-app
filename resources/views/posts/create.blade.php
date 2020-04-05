@@ -40,9 +40,11 @@
 @endsection
 
 @section('scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.1/trix.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr" defer></script>
-Usage
+<script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.1/trix.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    flatpickr('#published_at');
+</script>
 @endsection
 
 @section('css')
