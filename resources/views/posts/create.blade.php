@@ -4,7 +4,7 @@
 
 <div class="card card-default">
     <div class="card-header">
-        Create post
+        {{Create post}}
     </div>
     <div class="card-body">
         @if($errors->any())
