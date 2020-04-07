@@ -72,6 +72,14 @@
 
                 <input type="file" id="image" name="image" class="form-control">
             </div>
+
+            <div class="form-group">
+                <label for="category"></label>
+                <select name="category" id="category" class="form-control">
+
+                </select>
+            </div>
+
             <div class="form-group">
                 <button type="submit" class="btn btn-success">
                     {{ isset($post) ? 'Update post' : 'Create post' }}
