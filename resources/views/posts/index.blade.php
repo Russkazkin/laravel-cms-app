@@ -39,18 +39,7 @@
                            class="btn btn-info btn-sm"
                            role="button">Edit
                         </a>
-                        @endif
-                        <form action="{{ route('posts.destroy', $post->id) }}" method="POST" style="display: inline-block">
-                            @csrf
-                            @method('DELETE')
-                            <button
-                                class="btn btn-danger btn-sm"
-                                type="submit"
-                                role="button">
-                                {{ $post->trashed() ? 'Delete' : 'Trash' }}
-                            </button>
-                        </form>
-                        @if($post->trashed())
+                        @else
                         <form action="{{ route('posts.restore', $post->id) }}"
                               method="POST"
                               style="display: inline-block">
@@ -64,6 +53,16 @@
                             </button>
                         </form>
                         @endif
+                        <form action="{{ route('posts.destroy', $post->id) }}" method="POST" style="display: inline-block">
+                            @csrf
+                            @method('DELETE')
+                            <button
+                                class="btn btn-danger btn-sm"
+                                type="submit"
+                                role="button">
+                                {{ $post->trashed() ? 'Delete' : 'Trash' }}
+                            </button>
+                        </form>
                     </td>
                 </tr>
             @endforeach
