@@ -153,6 +153,6 @@ class PostsController extends Controller
 
         session()->flash('success', 'Post restored successfully');
 
-        return redirect(route('posts.index'));
+        return redirect()->back();
     }
 }
