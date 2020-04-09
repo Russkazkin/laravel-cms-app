@@ -47,7 +47,7 @@ class PostsController extends Controller
             'description' => $request->description,
             'content' => $request->text,
             'image' => $image,
-            'category_id' => $request->category,
+            'category_id' => $request->category_id,
             'published_at' => $request->published_at,
         ]);
 
@@ -75,7 +75,7 @@ class PostsController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('posts.create')->with('post', $post);
+        return view('posts.create')->with('post', $post)->with('categories', Category::all());
     }
 
     /**
@@ -87,7 +87,7 @@ class PostsController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        $data = $request->only(['title', 'description', 'text', 'published_at']);
+        $data = $request->only(['title', 'description', 'text', 'published_at', 'category_id']);
 
         if($request->hasFile('image')) {
 

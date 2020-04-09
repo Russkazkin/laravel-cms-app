@@ -28,7 +28,7 @@ class CreatePostsRequest extends FormRequest
             'description' => 'required',
             'image' => 'required|image',
             'text' => 'required',
-            'category' => 'required',
+            'category_id' => 'required',
         ];
     }
 }

@@ -24,11 +24,11 @@ class UpdatePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|unique:posts',
+            'title' => 'required',
             'description' => 'required',
-            'image' => 'required|image',
+            'image' => 'image',
             'text' => 'required',
-            'category' => 'required',
+            'category_id' => 'required',
             ];
     }
 }
