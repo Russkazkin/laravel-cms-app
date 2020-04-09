@@ -22,6 +22,9 @@
                 <th>
                     Name
                 </th>
+                <th>
+                    Post count
+                </th>
                 <th></th>
             </tr>
             </thead>
@@ -29,6 +32,7 @@
             @foreach($categories as $category)
             <tr>
                 <td>{{ $category->name }}</td>
+                <td>{{ $category->posts->count() }}</td>
                 <td>
                     <a href="{{ route('categories.edit', $category->id)}}"
                        class="btn btn-info btn-sm"
