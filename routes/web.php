@@ -21,10 +21,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('categories', 'CategoriesController');
+Route::resource('categories', 'CategoriesController')->middleware('auth');
 
-\Route::resource('posts', 'PostsController');
+\Route::resource('posts', 'PostsController')->middleware('auth');;
 
-\Route::get('trashed-posts', 'PostsController@trashed')->name('posts.trashed');
+\Route::get('trashed-posts', 'PostsController@trashed')->name('posts.trashed')->middleware('auth');;
 
-\Route::patch('posts/{post}/restore', 'PostsController@restore')->name('posts.restore');
+\Route::patch('posts/{post}/restore', 'PostsController@restore')->name('posts.restore')->middleware('auth');;

@@ -84,7 +84,7 @@
                         {{ session()->get('success') }}
                     </div>
                 @elseif(session()->has('warning'))
-                    <div class="alert alert-waring">
+                    <div class="alert alert-warning">
                         {{ session()->get('warning') }}
                     </div>
                 @endif
