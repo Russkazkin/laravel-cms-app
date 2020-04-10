@@ -19,12 +19,16 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+\Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('categories', 'CategoriesController')->middleware('auth');
+\Route::middleware('auth')->group(function (){
 
-\Route::resource('posts', 'PostsController')->middleware('auth');;
+    \Route::resource('categories', 'CategoriesController');
 
-\Route::get('trashed-posts', 'PostsController@trashed')->name('posts.trashed')->middleware('auth');;
+    \Route::resource('posts', 'PostsController');
 
-\Route::patch('posts/{post}/restore', 'PostsController@restore')->name('posts.restore')->middleware('auth');;
+    \Route::get('trashed-posts', 'PostsController@trashed')->name('posts.trashed');
+
+    \Route::patch('posts/{post}/restore', 'PostsController@restore')->name('posts.restore');
+
+});
