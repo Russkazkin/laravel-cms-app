@@ -25,6 +25,8 @@ Auth::routes();
 
     \Route::resource('categories', 'CategoriesController');
 
+    \Route::resource('tags', 'TagsController');
+
     \Route::resource('posts', 'PostsController');
 
     \Route::get('trashed-posts', 'PostsController@trashed')->name('posts.trashed');
