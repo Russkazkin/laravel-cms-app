@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Tag;
-use App\Http\Requests\tags\CreateTagRequest;
-use App\Http\Requests\tags\UpdateTagRequest;
+use App\Http\Requests\Tags\CreateTagRequest;
+use App\Http\Requests\Tags\UpdateTagRequest;
 use Illuminate\Http\Request;
 
 class TagsController extends Controller
