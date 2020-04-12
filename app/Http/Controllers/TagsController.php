@@ -59,24 +59,24 @@ class TagsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param Tag $tag
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit(Tag $Tag)
+    public function edit(Tag $tag)
     {
-        return view('tags.create')->with('Tag', $Tag);
+        return view('tags.create')->with('Tag', $tag);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  UpdateTagRequest  $request
-     * @param  Tag  $Tag
+     * @param  Tag  $tag
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(UpdateTagRequest $request, Tag $Tag)
+    public function update(UpdateTagRequest $request, Tag $tag)
     {
-        $Tag->update([
+        $tag->update([
             'name' => $request->name,
         ]);
 
@@ -88,12 +88,13 @@ class TagsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Tag $tag
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Exception
      */
-    public function destroy(Tag $Tag)
+    public function destroy(Tag $tag)
     {
-        $Tag->delete();
+        $tag->delete();
 
         session()->flash('success', 'Tag deleted successfully');
 
