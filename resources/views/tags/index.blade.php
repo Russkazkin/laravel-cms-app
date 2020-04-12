@@ -1,12 +1,12 @@
 <?php /**
- * @var $categories \App\Tag []
+ * @var $tags \App\Tag []
  */ ?>
 
 @extends('layouts.app')
 
 @section('content')
     <div class="d-flex justify-content-end mb-2">
-        <a href="{{ route('categories.create') }}" class="btn btn-success">
+        <a href="{{ route('tags.create') }}" class="btn btn-success">
             Add Tag
         </a>
     </div>
@@ -15,7 +15,7 @@
             Tags
         </div>
         <div class="card-body">
-            @if($categories->count())
+            @if($tags->count())
                 <table class="table">
                     <thead>
                     <tr>
@@ -29,12 +29,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($categories as $tag)
+                    @foreach($tags as $tag)
                         <tr>
                             <td>{{ $tag->name }}</td>
                             <td>{{ $tag->posts->count() }}</td>
                             <td>
-                                <a href="{{ route('categories.edit', $tag->id)}}"
+                                <a href="{{ route('tags.edit', $tag->id)}}"
                                    class="btn btn-info btn-sm"
                                    role="button">Edit</a>
                                 <button type="button" class="btn btn-danger btn-sm"
@@ -47,7 +47,7 @@
                     </tbody>
                 </table>
             @else
-                <h6 class="text-center">No categories yet</h6>
+                <h6 class="text-center">No tags yet</h6>
                 <div class="modal fade"
                      id="deleteModal" tabindex="-1"
                      role="dialog"
