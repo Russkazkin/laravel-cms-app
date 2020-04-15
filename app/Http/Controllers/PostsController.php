@@ -46,10 +46,12 @@ class PostsController extends Controller
      */
     public function store(CreatePostsRequest $request)
     {
-
+        /**
+         * @var $post Post
+         */
         $image = $request->image->store('posts');
 
-        Post::create([
+        $post = Post::create([
             'title' => $request->title,
             'description' => $request->description,
             'content' => $request->text,
@@ -57,6 +59,10 @@ class PostsController extends Controller
             'category_id' => $request->category_id,
             'published_at' => $request->published_at,
         ]);
+
+        if ($request->tags) {
+            $post->tags()->attach($request->tags);
+        }
 
         session()->flash('success', 'Post created successfully');
 
