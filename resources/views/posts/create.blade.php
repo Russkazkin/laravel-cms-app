@@ -86,7 +86,7 @@
                 @foreach($tags as $tag)
                         <option value="{{ $tag->id }}"
                             @if(isset($post))
-                                @if(in_array($tag->id, $post->tags->pluck('id')->toArray()))
+                                @if($post->hasTag($tag->id))
                                     selected
                                 @endif
                             @endif
