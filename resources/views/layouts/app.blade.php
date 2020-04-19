@@ -86,6 +86,10 @@
                     <div class="alert alert-warning">
                         {{ session()->get('warning') }}
                     </div>
+                @elseif(session()->has('error'))
+                    <div class="alert alert-danger">
+                        {{ session()->get('error') }}
+                    </div>
                 @endif
                 @auth
                     <div class="row">
