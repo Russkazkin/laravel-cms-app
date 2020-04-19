@@ -15,7 +15,6 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="vendor/select2/dist/css/select2.min.css" rel="stylesheet" />
     <style>
         .btn-info {
             color: white;
@@ -120,7 +119,7 @@
     </div>
 
     <!-- Scripts -->
-    <script src="vendor/select2/dist/js/select2.min.js"></script>
+
     <script src="{{ asset('js/app.js') }}"></script>
 
     @yield('scripts')
