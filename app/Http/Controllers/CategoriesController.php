@@ -61,7 +61,7 @@ class CategoriesController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(Category $category)
     {
@@ -90,10 +90,15 @@ class CategoriesController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Category $category)
     {
+        if($category->posts->count()) {
+            session()->flash('error', 'Category cannot be deleted because it has some posts.');
+            return redirect()->back();
+        }
+
         $category->delete();
 
         session()->flash('success', 'Category deleted successfully');
