@@ -97,7 +97,7 @@
                             <ul class="list-group mb-5">
                                 @if(auth()->user()->isAdmin())
                                 <li class="list-group-item">
-                                    <a href="{{ route('posts.index') }}">Users</a>
+                                    <a href="{{ route('users.index') }}">Users</a>
                                 </li>
                                 @endif
                                 <li class="list-group-item">

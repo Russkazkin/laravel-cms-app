@@ -33,4 +33,6 @@ Auth::routes();
 
     \Route::patch('posts/{post}/restore', 'PostsController@restore')->name('posts.restore');
 
+    \Route::get('users', 'UsersController@index')->name('users.index');
+
 });
