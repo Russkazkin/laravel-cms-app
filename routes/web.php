@@ -33,6 +33,10 @@ Auth::routes();
 
     \Route::patch('posts/{post}/restore', 'PostsController@restore')->name('posts.restore');
 
-    \Route::get('users', 'UsersController@index')->name('users.index');
 
+
+});
+
+\Route::middleware(['auth', 'admin'])->group(function (){
+    \Route::get('users', 'UsersController@index')->name('users.index');
 });
