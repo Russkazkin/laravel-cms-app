@@ -21,6 +21,7 @@
                         <th>Image</th>
                         <th>Name</th>
                         <th>Email</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -29,6 +30,11 @@
                             <td></td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
+                            @if(!$user->isAdmin())
+                            <td>
+                                <button class="btn btn-success">Make Admin</button>
+                            </td>
+                            @endif
                         </tr>
                     @endforeach
                     </tbody>
