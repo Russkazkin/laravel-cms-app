@@ -2,8 +2,8 @@
 // @formatter:off
 
 /**
- * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 7.1.3 on 2020-03-19 16:55:31.
+ * A helper file for Laravel, to provide autocomplete information to your IDE
+ * Generated for Laravel 7.9.2 on 2020-04-28 16:28:35.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -701,6 +701,19 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
+         * Add new prefix to list of absolute path prefixes.
+         *
+         * @param string $prefix
+         * @return \Illuminate\Foundation\Application 
+         * @static 
+         */ 
+        public static function addAbsoluteCachePathPrefix($prefix)
+        {
+                        /** @var \Illuminate\Foundation\Application $instance */
+                        return $instance->addAbsoluteCachePathPrefix($prefix);
+        }
+        
+        /**
          * Determine if the application is currently down for maintenance.
          *
          * @return bool 
@@ -1228,9 +1241,10 @@ namespace Illuminate\Support\Facades {
          * Call the given Closure / class@method and inject its dependencies.
          *
          * @param callable|string $callback
-         * @param array $parameters
+         * @param \Illuminate\Container\array<string,  mixed>  $parameters
          * @param string|null $defaultMethod
          * @return mixed 
+         * @throws \InvalidArgumentException
          * @static 
          */ 
         public static function call($callback, $parameters = [], $defaultMethod = null)
@@ -1260,6 +1274,7 @@ namespace Illuminate\Support\Facades {
          * @param string $abstract
          * @param array $parameters
          * @return mixed 
+         * @throws \Illuminate\Contracts\Container\BindingResolutionException
          * @static 
          */ 
         public static function makeWith($abstract, $parameters = [])
@@ -1288,7 +1303,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Instantiate a concrete instance of the given type.
          *
-         * @param string $concrete
+         * @param \Closure|string $concrete
          * @return mixed 
          * @throws \Illuminate\Contracts\Container\BindingResolutionException
          * @static 
@@ -2664,6 +2679,19 @@ namespace Illuminate\Support\Facades {
         {
                         return \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($value);
         }
+        
+        /**
+         * Compile Blade echos into valid PHP.
+         *
+         * @param string $value
+         * @return string 
+         * @static 
+         */ 
+        public static function compileEchos($value)
+        {
+                        /** @var \Illuminate\View\Compilers\BladeCompiler $instance */
+                        return $instance->compileEchos($value);
+        }
          
     }
 
@@ -3051,6 +3079,8 @@ namespace Illuminate\Support\Facades {
     /**
      * 
      *
+     * @method static \Illuminate\Contracts\Cache\Lock lock(string $name, int $seconds = 0, mixed $owner = null)
+     * @method static \Illuminate\Contracts\Cache\Lock restoreLock(string $name, string $owner)
      * @see \Illuminate\Cache\CacheManager
      * @see \Illuminate\Cache\Repository
      */ 
@@ -3940,7 +3970,7 @@ namespace Illuminate\Support\Facades {
          * @param string $key
          * @param mixed $default
          * @param string|null $path
-         * @return \Symfony\Component\HttpFoundation\Cookie 
+         * @return \Symfony\Component\HttpFoundation\Cookie|null 
          * @static 
          */ 
         public static function queued($key, $default = null, $path = null)
@@ -6502,7 +6532,7 @@ namespace Illuminate\Support\Facades {
      *
      * @method static \Illuminate\Http\Client\PendingRequest asJson()
      * @method static \Illuminate\Http\Client\PendingRequest asForm()
-     * @method static \Illuminate\Http\Client\PendingRequest attach(string $name, string $contents, string|null $filename = null, array $headers)
+     * @method static \Illuminate\Http\Client\PendingRequest attach(string $name, string $contents, string|null $filename = null, array $headers = [])
      * @method static \Illuminate\Http\Client\PendingRequest asMultipart()
      * @method static \Illuminate\Http\Client\PendingRequest bodyFormat(string $format)
      * @method static \Illuminate\Http\Client\PendingRequest contentType(string $contentType)
@@ -6622,6 +6652,44 @@ namespace Illuminate\Support\Facades {
         {
                         /** @var \Illuminate\Http\Client\Factory $instance */
                         $instance->assertSent($callback);
+        }
+        
+        /**
+         * Assert that a request / response pair was not recorded matching a given truth test.
+         *
+         * @param callable $callback
+         * @return void 
+         * @static 
+         */ 
+        public static function assertNotSent($callback)
+        {
+                        /** @var \Illuminate\Http\Client\Factory $instance */
+                        $instance->assertNotSent($callback);
+        }
+        
+        /**
+         * Assert that no request / response pair was recorded.
+         *
+         * @return void 
+         * @static 
+         */ 
+        public static function assertNothingSent()
+        {
+                        /** @var \Illuminate\Http\Client\Factory $instance */
+                        $instance->assertNothingSent();
+        }
+        
+        /**
+         * Assert how many requests have been recorded.
+         *
+         * @param $count
+         * @return void 
+         * @static 
+         */ 
+        public static function assertSentCount($count)
+        {
+                        /** @var \Illuminate\Http\Client\Factory $instance */
+                        $instance->assertSentCount($count);
         }
         
         /**
@@ -8572,6 +8640,40 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
+         * Create a new redirect response to a signed named route.
+         *
+         * @param string $route
+         * @param mixed $parameters
+         * @param \DateTimeInterface|\DateInterval|int|null $expiration
+         * @param int $status
+         * @param array $headers
+         * @return \Illuminate\Http\RedirectResponse 
+         * @static 
+         */ 
+        public static function signedRoute($route, $parameters = [], $expiration = null, $status = 302, $headers = [])
+        {
+                        /** @var \Illuminate\Routing\Redirector $instance */
+                        return $instance->signedRoute($route, $parameters, $expiration, $status, $headers);
+        }
+        
+        /**
+         * Create a new redirect response to a signed named route.
+         *
+         * @param string $route
+         * @param \DateTimeInterface|\DateInterval|int|null $expiration
+         * @param mixed $parameters
+         * @param int $status
+         * @param array $headers
+         * @return \Illuminate\Http\RedirectResponse 
+         * @static 
+         */ 
+        public static function temporarySignedRoute($route, $expiration, $parameters = [], $status = 302, $headers = [])
+        {
+                        /** @var \Illuminate\Routing\Redirector $instance */
+                        return $instance->temporarySignedRoute($route, $expiration, $parameters, $status, $headers);
+        }
+        
+        /**
          * Create a new redirect response to a controller action.
          *
          * @param string|array $action
@@ -10127,7 +10229,9 @@ namespace Illuminate\Support\Facades {
          * Gets the preferred format for the response by inspecting, in the following order:
          *   * the request format set using setRequestFormat
          *   * the values of the Accept HTTP header
-         *   * the content type of the body of the request.
+         * 
+         * Note that if you use this method, you should send the "Vary: Accept" header
+         * in the response to prevent any issues with intermediary HTTP caches.
          *
          * @static 
          */ 
@@ -10968,7 +11072,7 @@ namespace Illuminate\Support\Facades {
          * Create a new redirect response to a named route.
          *
          * @param string $route
-         * @param array $parameters
+         * @param mixed $parameters
          * @param int $status
          * @param array $headers
          * @return \Illuminate\Http\RedirectResponse 
@@ -10984,7 +11088,7 @@ namespace Illuminate\Support\Facades {
          * Create a new redirect response to a controller action.
          *
          * @param string $action
-         * @param array $parameters
+         * @param mixed $parameters
          * @param int $status
          * @param array $headers
          * @return \Illuminate\Http\RedirectResponse 
@@ -11329,13 +11433,14 @@ namespace Illuminate\Support\Facades {
          * Merge the given array with the last group stack.
          *
          * @param array $new
+         * @param bool $prependExistingPrefix
          * @return array 
          * @static 
          */ 
-        public static function mergeWithLastGroup($new)
+        public static function mergeWithLastGroup($new, $prependExistingPrefix = true)
         {
                         /** @var \Illuminate\Routing\Router $instance */
-                        return $instance->mergeWithLastGroup($new);
+                        return $instance->mergeWithLastGroup($new, $prependExistingPrefix);
         }
         
         /**
@@ -11363,6 +11468,21 @@ namespace Illuminate\Support\Facades {
         {
                         /** @var \Illuminate\Routing\Router $instance */
                         return $instance->addRoute($methods, $uri, $action);
+        }
+        
+        /**
+         * Create a new Route object.
+         *
+         * @param array|string $methods
+         * @param string $uri
+         * @param mixed $action
+         * @return \Illuminate\Routing\Route 
+         * @static 
+         */ 
+        public static function newRoute($methods, $uri, $action)
+        {
+                        /** @var \Illuminate\Routing\Router $instance */
+                        return $instance->newRoute($methods, $uri, $action);
         }
         
         /**
@@ -13297,7 +13417,8 @@ namespace Illuminate\Support\Facades {
          * @return bool 
          * @static 
          */ 
-        public static function prepend($path, $data, $separator = '')
+        public static function prepend($path, $data, $separator = '
+')
         {
                         /** @var \Illuminate\Filesystem\FilesystemAdapter $instance */
                         return $instance->prepend($path, $data, $separator);
@@ -13312,7 +13433,8 @@ namespace Illuminate\Support\Facades {
          * @return bool 
          * @static 
          */ 
-        public static function append($path, $data, $separator = '')
+        public static function append($path, $data, $separator = '
+')
         {
                         /** @var \Illuminate\Filesystem\FilesystemAdapter $instance */
                         return $instance->append($path, $data, $separator);
@@ -15138,6 +15260,229 @@ namespace Illuminate\Support {
      *
      */ 
     class Str {
+         
+    }
+ 
+}
+
+namespace Thomaswelton\LaravelGravatar\Facades { 
+
+    /**
+     * 
+     *
+     */ 
+    class Gravatar {
+        
+        /**
+         * Return the URL of a Gravatar. Note: it does not check for the existence of this Gravatar.
+         *
+         * @param string $email The email address.
+         * @param int $size Override the size of the Gravatar.
+         * @param null|string $rating Override the default rating if you want to.
+         * @return string The URL of the Gravatar.
+         * @static 
+         */ 
+        public static function src($email, $size = null, $rating = null)
+        {
+                        /** @var \Thomaswelton\LaravelGravatar\Gravatar $instance */
+                        return $instance->src($email, $size, $rating);
+        }
+        
+        /**
+         * Return the code of HTML image for a Gravatar.
+         *
+         * @param string $email The email address.
+         * @param string $alt The alt attribute for the image.
+         * @param array $attributes Override the 'height' and the 'width' of the image if you want.
+         * @param null|string $rating Override the default rating if you want to.
+         * @return string The code of the HTML image.
+         * @static 
+         */ 
+        public static function image($email, $alt = null, $attributes = [], $rating = null)
+        {
+                        /** @var \Thomaswelton\LaravelGravatar\Gravatar $instance */
+                        return $instance->image($email, $alt, $attributes, $rating);
+        }
+        
+        /**
+         * Check if a Gravatar image exists.
+         *
+         * @param string $email The email address.
+         * @return bool True if the Gravatar exists, false otherwise.
+         * @static 
+         */ 
+        public static function exists($email)
+        {
+                        /** @var \Thomaswelton\LaravelGravatar\Gravatar $instance */
+                        return $instance->exists($email);
+        }
+        
+        /**
+         * Get the currently set avatar size.
+         *
+         * @return integer - The current avatar size in use.
+         * @static 
+         */ 
+        public static function getAvatarSize()
+        {
+            //Method inherited from \thomaswelton\GravatarLib\Gravatar            
+                        /** @var \Thomaswelton\LaravelGravatar\Gravatar $instance */
+                        return $instance->getAvatarSize();
+        }
+        
+        /**
+         * Set the avatar size to use.
+         *
+         * @param integer $size - The avatar size to use, must be less than 512 and greater than 0.
+         * @return \thomaswelton\GravatarLib\Gravatar - Provides a fluent interface.
+         * @throws \InvalidArgumentException
+         * @static 
+         */ 
+        public static function setAvatarSize($size)
+        {
+            //Method inherited from \thomaswelton\GravatarLib\Gravatar            
+                        /** @var \Thomaswelton\LaravelGravatar\Gravatar $instance */
+                        return $instance->setAvatarSize($size);
+        }
+        
+        /**
+         * Get the current default image setting.
+         *
+         * @return mixed - False if no default image set, string if one is set.
+         * @static 
+         */ 
+        public static function getDefaultImage()
+        {
+            //Method inherited from \thomaswelton\GravatarLib\Gravatar            
+                        /** @var \Thomaswelton\LaravelGravatar\Gravatar $instance */
+                        return $instance->getDefaultImage();
+        }
+        
+        /**
+         * Set the default image to use for avatars.
+         *
+         * @param mixed $image - The default image to use. Use boolean false for the gravatar default, a string containing a valid image URL, or a string specifying a recognized gravatar "default".
+         * @return \thomaswelton\GravatarLib\Gravatar - Provides a fluent interface.
+         * @throws \InvalidArgumentException
+         * @static 
+         */ 
+        public static function setDefaultImage($image)
+        {
+            //Method inherited from \thomaswelton\GravatarLib\Gravatar            
+                        /** @var \Thomaswelton\LaravelGravatar\Gravatar $instance */
+                        return $instance->setDefaultImage($image);
+        }
+        
+        /**
+         * Get the current maximum allowed rating for avatars.
+         *
+         * @return string - The string representing the current maximum allowed rating ('g', 'pg', 'r', 'x').
+         * @static 
+         */ 
+        public static function getMaxRating()
+        {
+            //Method inherited from \thomaswelton\GravatarLib\Gravatar            
+                        /** @var \Thomaswelton\LaravelGravatar\Gravatar $instance */
+                        return $instance->getMaxRating();
+        }
+        
+        /**
+         * Set the maximum allowed rating for avatars.
+         *
+         * @param string $rating - The maximum rating to use for avatars ('g', 'pg', 'r', 'x').
+         * @return \thomaswelton\GravatarLib\Gravatar - Provides a fluent interface.
+         * @throws \InvalidArgumentException
+         * @static 
+         */ 
+        public static function setMaxRating($rating)
+        {
+            //Method inherited from \thomaswelton\GravatarLib\Gravatar            
+                        /** @var \Thomaswelton\LaravelGravatar\Gravatar $instance */
+                        return $instance->setMaxRating($rating);
+        }
+        
+        /**
+         * Check if we are using the secure protocol for the image URLs.
+         *
+         * @return boolean - Are we supposed to use the secure protocol?
+         * @static 
+         */ 
+        public static function usingSecureImages()
+        {
+            //Method inherited from \thomaswelton\GravatarLib\Gravatar            
+                        /** @var \Thomaswelton\LaravelGravatar\Gravatar $instance */
+                        return $instance->usingSecureImages();
+        }
+        
+        /**
+         * Enable the use of the secure protocol for image URLs.
+         *
+         * @return \thomaswelton\GravatarLib\Gravatar - Provides a fluent interface.
+         * @static 
+         */ 
+        public static function enableSecureImages()
+        {
+            //Method inherited from \thomaswelton\GravatarLib\Gravatar            
+                        /** @var \Thomaswelton\LaravelGravatar\Gravatar $instance */
+                        return $instance->enableSecureImages();
+        }
+        
+        /**
+         * Disable the use of the secure protocol for image URLs.
+         *
+         * @return \thomaswelton\GravatarLib\Gravatar - Provides a fluent interface.
+         * @static 
+         */ 
+        public static function disableSecureImages()
+        {
+            //Method inherited from \thomaswelton\GravatarLib\Gravatar            
+                        /** @var \Thomaswelton\LaravelGravatar\Gravatar $instance */
+                        return $instance->disableSecureImages();
+        }
+        
+        /**
+         * Build the avatar URL based on the provided email address.
+         *
+         * @param string $email - The email to get the gravatar for.
+         * @param string $hash_email - Should we hash the $email variable?  (Useful if the email address has a hash stored already)
+         * @return string - The XHTML-safe URL to the gravatar.
+         * @static 
+         */ 
+        public static function buildGravatarURL($email, $hash_email = true)
+        {
+            //Method inherited from \thomaswelton\GravatarLib\Gravatar            
+                        /** @var \Thomaswelton\LaravelGravatar\Gravatar $instance */
+                        return $instance->buildGravatarURL($email, $hash_email);
+        }
+        
+        /**
+         * Get the email hash to use (after cleaning the string).
+         *
+         * @param string $email - The email to get the hash for.
+         * @return string - The hashed form of the email, post cleaning.
+         * @static 
+         */ 
+        public static function getEmailHash($email)
+        {
+            //Method inherited from \thomaswelton\GravatarLib\Gravatar            
+                        /** @var \Thomaswelton\LaravelGravatar\Gravatar $instance */
+                        return $instance->getEmailHash($email);
+        }
+        
+        /**
+         * 
+         * 
+         * ...Yeah, it's just an alias of buildGravatarURL.  This is just to make it easier to use as a twig asset.
+         *
+         * @see \thomaswelton\GravatarLib\Gravatar::buildGravatarURL()
+         * @static 
+         */ 
+        public static function get($email, $hash_email = true)
+        {
+            //Method inherited from \thomaswelton\GravatarLib\Gravatar            
+                        /** @var \Thomaswelton\LaravelGravatar\Gravatar $instance */
+                        return $instance->get($email, $hash_email);
+        }
          
     }
  
@@ -17577,7 +17922,7 @@ namespace  {
             /**
              * Add an "order by" clause to the query.
              *
-             * @param \Closure|\Illuminate\Database\Query\Builder|string $column
+             * @param \Closure|\Illuminate\Database\Query\Builder|\Illuminate\Database\Query\Expression|string $column
              * @param string $direction
              * @return \Illuminate\Database\Query\Builder 
              * @throws \InvalidArgumentException
@@ -17723,6 +18068,18 @@ namespace  {
             {
                                 /** @var \Illuminate\Database\Query\Builder $instance */
                                 return $instance->forPageAfterId($perPage, $lastId, $column);
+            }
+         
+            /**
+             * Remove all existing orders and optionally add a new order.
+             *
+             * @return \Illuminate\Database\Query\Builder 
+             * @static 
+             */ 
+            public static function reorder($column = null, $direction = 'asc')
+            {
+                                /** @var \Illuminate\Database\Query\Builder $instance */
+                                return $instance->reorder($column, $direction);
             }
          
             /**
@@ -18316,6 +18673,8 @@ namespace  {
     class Validator extends \Illuminate\Support\Facades\Validator {}
 
     class View extends \Illuminate\Support\Facades\View {}
+
+    class Gravatar extends \Thomaswelton\LaravelGravatar\Facades\Gravatar {}
 
     class Flare extends \Facade\Ignition\Facades\Flare {}
  
