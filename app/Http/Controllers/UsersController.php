@@ -22,4 +22,9 @@ class UsersController extends Controller
 
         return redirect(route('user.index'));
     }
+
+    public function edit()
+    {
+        return view('users.edit');
+    }
 }
