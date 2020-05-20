@@ -37,7 +37,7 @@
                     <td>
                         <a href="{{ route('categories.edit', $post->category->id) }}">{{ $post->category->name }}</a>
                     </td>
-                    <td>
+                    <td class="posts-buttons">
                         @if(!$post->trashed())
                         <a href="{{ route('posts.edit', $post->id)}}"
                            class="btn btn-info btn-sm"
