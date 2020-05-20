@@ -361,71 +361,17 @@
 
                 <div class="col-md-8 col-xl-9">
                     <div class="row gap-y">
-
-                        <div class="col-md-6">
-                            <div class="card border hover-shadow-6 mb-6 d-block">
-                                <a href="#"><img class="card-img-top" src="../assets/img/thumb/1.jpg" alt="Card image cap"></a>
-                                <div class="p-6 text-center">
-                                    <p><a class="small-5 text-lighter text-uppercase ls-2 fw-400" href="#">News</a></p>
-                                    <h5 class="mb-0"><a class="text-dark" href="#">We relocated our office to a new designed garage</a></h5>
+                        @foreach($posts as $post)
+                            <div class="col-md-6">
+                                <div class="card border hover-shadow-6 mb-6 d-block">
+                                    <a href="#"><img class="card-img-top" src="{{ asset("storage/$post->image") }}" alt="Card image cap"></a>
+                                    <div class="p-6 text-center">
+                                        <p><a class="small-5 text-lighter text-uppercase ls-2 fw-400" href="#">{{ $post->category->name }}</a></p>
+                                        <h5 class="mb-0"><a class="text-dark" href="#">{{ $post->title }}</a></h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-
-                        <div class="col-md-6">
-                            <div class="card border hover-shadow-6 mb-6 d-block">
-                                <a href="#"><img class="card-img-top" src="../assets/img/thumb/2.jpg" alt="Card image cap"></a>
-                                <div class="p-6 text-center">
-                                    <p><a class="small-5 text-lighter text-uppercase ls-2 fw-400" href="#">Marketing</a></p>
-                                    <h5 class="mb-0"><a class="text-dark" href="#">Top 5 brilliant content marketing strategies</a></h5>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-6">
-                            <div class="card border hover-shadow-6 mb-6 d-block">
-                                <a href="#"><img class="card-img-top" src="../assets/img/thumb/3.jpg" alt="Card image cap"></a>
-                                <div class="p-6 text-center">
-                                    <p><a class="small-5 text-lighter text-uppercase ls-2 fw-400" href="#">Design</a></p>
-                                    <h5 class="mb-0"><a class="text-dark" href="#">Best practices for minimalist design with example</a></h5>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-6">
-                            <div class="card border hover-shadow-6 mb-6 d-block">
-                                <a href="#"><img class="card-img-top" src="../assets/img/thumb/4.jpg" alt="Card image cap"></a>
-                                <div class="p-6 text-center">
-                                    <p><a class="small-5 text-lighter text-uppercase ls-2 fw-400" href="#">Hiring</a></p>
-                                    <h5 class="mb-0"><a class="text-dark" href="#">Congratulate and thank to Maryam for joining our team</a></h5>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-6">
-                            <div class="card border hover-shadow-6 mb-6 d-block">
-                                <a href="#"><img class="card-img-top" src="../assets/img/thumb/5.jpg" alt="Card image cap"></a>
-                                <div class="p-6 text-center">
-                                    <p><a class="small-5 text-lighter text-uppercase ls-2 fw-400" href="#">Product</a></p>
-                                    <h5 class="mb-0"><a class="text-dark" href="#">New published books to read by a product designer</a></h5>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-md-6">
-                            <div class="card border hover-shadow-6 mb-6 d-block">
-                                <a href="#"><img class="card-img-top" src="../assets/img/thumb/6.jpg" alt="Card image cap"></a>
-                                <div class="p-6 text-center">
-                                    <p><a class="small-5 text-lighter text-uppercase ls-2 fw-400" href="#">Management</a></p>
-                                    <h5 class="mb-0"><a class="text-dark" href="#">This is why it's time to ditch dress codes at work</a></h5>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
 
                     </div>
 
@@ -485,24 +431,10 @@
 
                         <h6 class="sidebar-title">Tags</h6>
                         <div class="gap-multiline-items-1">
-                            <a class="badge badge-secondary" href="#">Record</a>
-                            <a class="badge badge-secondary" href="#">Progress</a>
-                            <a class="badge badge-secondary" href="#">Customers</a>
-                            <a class="badge badge-secondary" href="#">Freebie</a>
-                            <a class="badge badge-secondary" href="#">Offer</a>
-                            <a class="badge badge-secondary" href="#">Screenshot</a>
-                            <a class="badge badge-secondary" href="#">Milestone</a>
-                            <a class="badge badge-secondary" href="#">Version</a>
-                            <a class="badge badge-secondary" href="#">Design</a>
-                            <a class="badge badge-secondary" href="#">Customers</a>
-                            <a class="badge badge-secondary" href="#">Job</a>
+                            @foreach($tags as $tag)
+                                <a class="badge badge-secondary" href="#">{{ $tag->name }}</a>
+                            @endforeach
                         </div>
-
-                        <hr>
-
-                        <h6 class="sidebar-title">About</h6>
-                        <p class="small-3">TheSaaS is a responsive, professional, and multipurpose SaaS, Software, Startup and WebApp landing template powered by Bootstrap 4. TheSaaS is a powerful and super flexible tool for any kind of landing pages.</p>
-
 
                     </div>
                 </div>
