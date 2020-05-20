@@ -1,3 +1,12 @@
+<?php
+/**
+ * @var $categories \App\Category []
+ * @var $tags \App\Tag []
+ * @var $posts \App\Post []
+ */
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -444,14 +453,9 @@
 
                         <h6 class="sidebar-title">Categories</h6>
                         <div class="row link-color-default fs-14 lh-24">
-                            <div class="col-6"><a href="#">News</a></div>
-                            <div class="col-6"><a href="#">Updates</a></div>
-                            <div class="col-6"><a href="#">Design</a></div>
-                            <div class="col-6"><a href="#">Marketing</a></div>
-                            <div class="col-6"><a href="#">Partnership</a></div>
-                            <div class="col-6"><a href="#">Product</a></div>
-                            <div class="col-6"><a href="#">Hiring</a></div>
-                            <div class="col-6"><a href="#">Offers</a></div>
+                            @foreach($categories as $category)
+                                <div class="col-6"><a href="#">{{ $category->name }}</a></div>
+                            @endforeach
                         </div>
 
                         <hr>
