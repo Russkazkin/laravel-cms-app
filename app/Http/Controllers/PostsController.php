@@ -109,14 +109,23 @@ class PostsController extends Controller
 
             $post->deleteImage();
 
-            $data['image'] = $image;
+        } else {
+            $image = $post->image;
         }
 
         if($request->tags) {
             $post->tags()->sync($request->tags);
         }
 
-        $post->update($data);
+        $post->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'content' => $request->text,
+            'image' => $image,
+            'user_id' => auth()->user()->id,
+            'category_id' => $request->category_id,
+            'published_at' => $request->published_at,
+        ]);
 
         session()->flash('success', 'Post updated successfully');
 
