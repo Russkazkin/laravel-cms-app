@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 \Route::get('/', 'WelcomeController@index')->name('welcome');
-\Route::get('posts/{post}', [ PostsController::class, 'show' ]);
+\Route::get('blog/posts/{post}', [ PostsController::class, 'show' ])->name('blog.show');
 
 Auth::routes();
 
