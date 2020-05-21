@@ -3,6 +3,7 @@
 use App\Category;
 use App\Post;
 use App\Tag;
+use App\User;
 use Illuminate\Database\Seeder;
 
 class PostsTableSeeder extends Seeder
@@ -74,42 +75,58 @@ class PostsTableSeeder extends Seeder
             'name' => 'Offers',
         ]);
 
-        $post1 = Post::create([
+        $author1 = User::create([
+            'name' => 'John Doe',
+            'email' => 'john@doe.com',
+            'password' => Hash::make('password'),
+        ]);
+        $author2 = User::create([
+            'name' => 'Adam Smith',
+            'email' => 'adam@smith.com',
+            'password' => Hash::make('password'),
+        ]);
+        $author3 = User::create([
+            'name' => 'Vladimir Lenin',
+            'email' => 'vladimir@lenin.su',
+            'password' => Hash::make('password'),
+        ]);
+
+        $post1 = $author1->posts()->create([
             'title' => 'We relocated our office to a new designed garage',
             'description' => 'Ut a nisl id ante tempus hendrerit. Maecenas nec odio et ante tincidunt tempus. Phasellus nec sem in justo pellentesque facilisis. Sed hendrerit. Aliquam lobortis.',
             'content' => 'Nullam cursus lacinia erat. Sed hendrerit. Donec sodales sagittis magna. Quisque libero metus, condimentum nec, tempor a, commodo mollis, magna. Nullam sagittis. Morbi ac felis. Praesent ut ligula non mi varius sagittis. Aenean commodo ligula eget dolor. Cras sagittis. Suspendisse potenti.',
             'category_id' => $category1->id,
             'image' => 'posts/1.jpg',
         ]);
-        $post2 = Post::create([
+        $post2 = $author2->posts()->create([
             'title' => 'Top 5 brilliant content marketing strategies',
             'description' => 'Ut a nisl id ante tempus hendrerit. Maecenas nec odio et ante tincidunt tempus. Phasellus nec sem in justo pellentesque facilisis. Sed hendrerit. Aliquam lobortis.',
             'content' => 'Nullam cursus lacinia erat. Sed hendrerit. Donec sodales sagittis magna. Quisque libero metus, condimentum nec, tempor a, commodo mollis, magna. Nullam sagittis. Morbi ac felis. Praesent ut ligula non mi varius sagittis. Aenean commodo ligula eget dolor. Cras sagittis. Suspendisse potenti.',
             'category_id' => $category6->id,
             'image' => 'posts/2.jpg',
         ]);
-        $post3 = Post::create([
+        $post3 = $author3->posts()->create([
             'title' => 'Best practices for minimalist design with example',
             'description' => 'Ut a nisl id ante tempus hendrerit. Maecenas nec odio et ante tincidunt tempus. Phasellus nec sem in justo pellentesque facilisis. Sed hendrerit. Aliquam lobortis.',
             'content' => 'Nullam cursus lacinia erat. Sed hendrerit. Donec sodales sagittis magna. Quisque libero metus, condimentum nec, tempor a, commodo mollis, magna. Nullam sagittis. Morbi ac felis. Praesent ut ligula non mi varius sagittis. Aenean commodo ligula eget dolor. Cras sagittis. Suspendisse potenti.',
             'category_id' => $category2->id,
             'image' => 'posts/3.jpg',
         ]);
-        $post4 = Post::create([
+        $post4 = $author1->posts()->create([
             'title' => 'Congratulate and thank to Maryam for joining our team',
             'description' => 'Ut a nisl id ante tempus hendrerit. Maecenas nec odio et ante tincidunt tempus. Phasellus nec sem in justo pellentesque facilisis. Sed hendrerit. Aliquam lobortis.',
             'content' => 'Nullam cursus lacinia erat. Sed hendrerit. Donec sodales sagittis magna. Quisque libero metus, condimentum nec, tempor a, commodo mollis, magna. Nullam sagittis. Morbi ac felis. Praesent ut ligula non mi varius sagittis. Aenean commodo ligula eget dolor. Cras sagittis. Suspendisse potenti.',
             'category_id' => $category4->id,
             'image' => 'posts/4.jpg',
         ]);
-        $post5 = Post::create([
+        $post5 = $author2->posts()->create([
             'title' => 'New published books to read by a product designer',
             'description' => 'Ut a nisl id ante tempus hendrerit. Maecenas nec odio et ante tincidunt tempus. Phasellus nec sem in justo pellentesque facilisis. Sed hendrerit. Aliquam lobortis.',
             'content' => 'Nullam cursus lacinia erat. Sed hendrerit. Donec sodales sagittis magna. Quisque libero metus, condimentum nec, tempor a, commodo mollis, magna. Nullam sagittis. Morbi ac felis. Praesent ut ligula non mi varius sagittis. Aenean commodo ligula eget dolor. Cras sagittis. Suspendisse potenti.',
             'category_id' => $category7->id,
             'image' => 'posts/5.jpg',
         ]);
-        $post6 = Post::create([
+        $post6 = $author3->posts()->create([
             'title' => 'This is why it\'s time to ditch dress codes at work',
             'description' => 'Ut a nisl id ante tempus hendrerit. Maecenas nec odio et ante tincidunt tempus. Phasellus nec sem in justo pellentesque facilisis. Sed hendrerit. Aliquam lobortis.',
             'content' => 'Nullam cursus lacinia erat. Sed hendrerit. Donec sodales sagittis magna. Quisque libero metus, condimentum nec, tempor a, commodo mollis, magna. Nullam sagittis. Morbi ac felis. Praesent ut ligula non mi varius sagittis. Aenean commodo ligula eget dolor. Cras sagittis. Suspendisse potenti.',
