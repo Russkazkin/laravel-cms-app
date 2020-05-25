@@ -54,6 +54,8 @@
         <div class="container">
             <div class="row">
                 {!! $post->content !!}
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <div class="addthis_inline_share_toolbox mt-3"></div>
             </div>
             <div class="row">
                 <div class="gap-xy-2 mt-6">
