@@ -113,6 +113,7 @@
 <script>
     flatpickr('#published_at', {
         enableTime: true,
+        enableSeconds: true
     });
     $(document).ready(function() {
         $('.tags-selector').select2();
